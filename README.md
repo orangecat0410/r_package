@@ -31,7 +31,9 @@ An R package that can extract colors from images
 
 安装方法
 
-install.packages(c("png", "ggplot2", "scales"))
+install.packages("https://github.com/orangecat0410/r_package/raw/main/mycolor_0.0.0.9000.tar.gz",
+                 repos = NULL,
+                 type = "source")
 
 
 使用示例
@@ -110,20 +112,3 @@ start_pre 邻近采样的起始位置比例 (0-1之间)
 2. 白色过滤基于正则表达式 "^.(F).(F).(F)"
 3. 使用mycolor2时建议先合并多个图片的颜色向量
 4. 可视化依赖scales::show_col()函数
-
-示例效果
-
- (注：此处添加示例图片链接)
-
-将此内容保存为README.md放在GitHub仓库根目录即可。文档包含：
-• 功能摘要
-
-• 安装说明
-
-• 参数详解表
-
-• 完整使用示例
-
-• 注意事项
-
-建议补充实际运行截图作为示例效果图，让用户更直观了解输出结果。
