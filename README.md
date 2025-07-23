@@ -3,17 +3,16 @@ An R package that can extract colors from images
 
 该R脚本提供从图片中提取代表色的功能，支持单张图片或整个文件夹批量处理，并提供颜色后处理功能。
 
-安装方法
-
+# 安装方法
 install.packages("https://github.com/orangecat0410/r_package/raw/main/mycolor_0.0.0.9000.tar.gz",
                  repos = NULL,
                  type = "source")
 
-功能概述
+# 功能概述
 这个R包提供了一系列从图像中提取主要（代表）颜色的功能。它支持单张PNG图像或整个文件夹中的PNG图像。提取颜色的方法有两种：一种是基于K-means聚类的代表色提取，另一种是基于颜色频率的阈值提取。此外，还提供了颜色后处理功能，如去除白色、颜色排序和选择等。
 
-函数详细说明及示例
-1. dominant_colors
+# 函数详细说明及示例
+# 1. dominant_colors
 ​​功能​​：使用K-means聚类从单张PNG图像中提取代表色。
 
 ​​参数​​：
@@ -28,7 +27,9 @@ nowhite: 是否去除纯白色（接近#FFFFFF的颜色）。
 # 提取5种代表色，并去除白色
 colors <- dominant_colors("path/to/image.png", k=5, nowhite=TRUE)
 print(colors)
-2. get_colors
+
+
+# 2. get_colors
 ​​功能​​：基于颜色频率和阈值从单张PNG图像中提取颜色。
 
 ​​参数​​：
@@ -43,7 +44,9 @@ nowhite: 是否去除纯白色。
 # 提取频率超过1%的颜色，并去除白色
 colors <- get_colors("path/to/image.png", threshold=0.01, nowhite=TRUE)
 print(colors)
-3. dominant_dir_colors
+
+
+# 3. dominant_dir_colors
 ​​功能​​：从指定文件夹中的所有PNG图像中提取代表色（使用K-means方法）。
 
 ​​参数​​：
@@ -56,14 +59,15 @@ toc: 是否将结果合并为一个向量（TRUE）还是保留为每个图片�
 
 ​​示例​​：
 
-# 从文件夹中每张图片提取5种代表色，去除白色，结果合并为一个向量
+#从文件夹中每张图片提取5种代表色，去除白色，结果合并为一个向量
 all_colors <- dominant_dir_colors("path/to/folder", k=5, nowhite=TRUE, toc=TRUE)
 print(all_colors)
 
-# 保留为列表
+#保留为列表
 color_list <- dominant_dir_colors("path/to/folder", k=5, nowhite=TRUE, toc=FALSE)
 print(color_list)
-4. get_dir_colors
+
+# 4. get_dir_colors
 ​​功能​​：从指定文件夹中的所有PNG图像中基于频率阈值提取颜色。
 
 ​​参数​​：
@@ -76,14 +80,16 @@ toc: 是否将结果合并为一个向量（TRUE）还是保留为每个图片�
 
 ​​示例​​：
 
-# 从文件夹中每张图片提取频率超过1%的颜色，去除白色，结果合并为一个向量
+#从文件夹中每张图片提取频率超过1%的颜色，去除白色，结果合并为一个向量
 all_colors <- get_dir_colors("path/to/folder", threshold=0.01, nowhite=TRUE, toc=TRUE)
 print(all_colors)
 
-# 保留为列表
+#保留为列表
 color_list <- get_dir_colors("path/to/folder", threshold=0.01, nowhite=TRUE, toc=FALSE)
 print(color_list)
-5. mycolor2
+
+
+# 5. mycolor2
 ​​功能​​：从一个颜色列表（向量）中选择指定数量的颜色，并支持不同的排序和选择方法。
 
 ​​参数​​：
@@ -104,19 +110,19 @@ start_pre: 当selection="neighbor"时，指定起始位置的比例（0到1之�
 
 ​​示例​​：
 
-# 假设有一个颜色向量color_vector
-# 如果第一个变量为向量外的其他值，则自动使用函数内置的色表
-# 按色相排序后，随机等间距选择40个颜色
+#假设有一个颜色向量color_vector
+#如果第一个变量为向量外的其他值，则自动使用函数内置的色表
+#按色相排序后，随机等间距选择40个颜色
 selected_colors <- mycolor2(color_vector, NUM=40, source="level", selection="Equidistant", seed=123, start_pre=NA)
 
-# 按深度排序，随机选择40个颜色
+#按深度排序，随机选择40个颜色
 selected_colors <- mycolor2(color_vector, NUM=40, source="depth", selection="radom", seed=123)
 
-# 按原始顺序，选择相邻的40个颜色，从中间位置开始
+#按原始顺序，选择相邻的40个颜色，从中间位置开始
 selected_colors <- mycolor2(color_vector, NUM=40, source="raw", selection="neighbor", start_pre=0.5)
-注意事项
+# 注意事项
 函数中使用了png包读取图像，scales包用于显示颜色。请确保已安装这些包。
 在mycolor2函数中，如果选择等间距或随机选择，设置随机种子（seed）可以保证结果可重现。
 去除白色（nowhite=TRUE）是通过匹配十六进制代码接近"#FFFFFF"的颜色实现的。注意：该方法可能无法去除所有白色背景（例如，接近白色但不是#FFFFFF的颜色），但可以去除纯白。
-作者
+# 作者
 Full sugar white bread rolls
