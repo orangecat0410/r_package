@@ -41,7 +41,7 @@ nowhite: 是否去除纯白色。
 
 ​​示例​​：
 
-# 提取频率超过1%的颜色，并去除白色
+#提取频率超过1%的颜色，并去除白色
 colors <- get_colors("path/to/image.png", threshold=0.01, nowhite=TRUE)
 print(colors)
 
