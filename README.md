@@ -24,7 +24,7 @@ nowhite: 是否去除纯白色（接近#FFFFFF的颜色）。
 
 ​​示例​​：
 
-# 提取5种代表色，并去除白色
+#提取5种代表色，并去除白色
 colors <- dominant_colors("path/to/image.png", k=5, nowhite=TRUE)
 print(colors)
 
