@@ -4,7 +4,7 @@ An R package that can extract colors from images
 该R脚本提供从图片中提取代表色的功能，支持单张图片或整个文件夹批量处理，并提供颜色后处理功能。
 
 # 安装方法
-remotes::install_url("https://github.com/orangecat0410/r_package/raw/main/mycolor_0.0.0.9000.tar.gz")
+remotes::install_url("https://github.com/orangecat0410/r_package/raw/main/mycolor_0.0.1.tar.gz")
 
 # 功能概述
 这个R包提供了一系列从图像中提取主要（代表）颜色的功能。它支持单张PNG图像或整个文件夹中的PNG图像。提取颜色的方法有两种：一种是基于K-means聚类的代表色提取，另一种是基于颜色频率的阈值提取。此外，还提供了颜色后处理功能，如去除白色、颜色排序和选择等。
